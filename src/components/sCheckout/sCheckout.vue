@@ -23,7 +23,13 @@
 
             </router-link>
 
-            <span>{{ product.qt }}</span>
+            <input  type="number"   
+                    :value="product.ordered" 
+                    min="0"
+                    :max="product.qt"
+                    @change="checkoutQtChange(product)"
+                    required>
+
             <span>{{ product.price }}$</span>
             <span>{{ product.price * product.ordered }}$</span>
                     
@@ -51,6 +57,20 @@ export default {
 
     computed: {
         ...mapGetters(['totalToPay'])
+    },
+    methods: {
+
+        checkoutQtChange(product){
+
+            if(Number(event.target.value) <= product.qt){
+                let productDetails = {
+                id: product.id,
+                newOrderedQt: Number(event.target.value)
+            }
+            this.$store.commit("checkoutQtChange", productDetails)
+            } else return
+            
+        }
     }
     
 }
