@@ -1,0 +1,45 @@
+{
+    "products": [
+        {   
+            "id": 0,
+            "category": "smartphone",
+            "brand": "samsung",
+            "model": "galaxy s10",
+            "qt": 10,
+            "price": 2520
+        },
+        {   
+            "id": 1,
+            "category": "smartphone",
+            "brand": "sony",
+            "model": "xperia 1",
+            "qt": 5,
+            "price": 4000
+        },
+        {   
+            "id": 2,
+            "category": "smartphone",
+            "brand": "nokia",
+            "model": "lumia",
+            "qt": 3,
+            "price": 800
+        },
+        {   
+            "id": 3,
+            "category": "smartphone",
+            "brand": "samsung",
+            "model": "A6",
+            "qt": 20,
+            "price": 2000
+        },
+        {   
+            "id": 4,
+            "category": "smartphone",
+            "brand": "xiaomi",
+            "model": "mi6 ",
+            "qt": 0,
+            "price": 1500
+        }
+
+    ]
+}
