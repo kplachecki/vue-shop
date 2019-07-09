@@ -57,8 +57,14 @@ export const store = new Vuex.Store({
 
     qtChanged: (state, actionDetail) => {
 
-      const foundProduct = state.cart.find(el => el.id === actionDetail.id)
-      actionDetail.method === 'increase' ? foundProduct.ordered += 1 : foundProduct.ordered -= 1
+      const foundProduct = state.cart.find(el => el.id === actionDetail.id);
+      actionDetail.method === 'increase' ? foundProduct.ordered += 1 : foundProduct.ordered -= 1;
+    },
+
+    checkoutQtChange: (state, productDetails) => {
+      const foundProduct = state.cart.find(el => el.id === productDetails.id);
+      foundProduct.ordered = productDetails.newOrderedQt
+      
     },
 
     showCart: state => {
