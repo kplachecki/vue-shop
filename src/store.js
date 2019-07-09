@@ -67,8 +67,8 @@ export const store = new Vuex.Store({
       
     },
 
-    showCart: state => {
-      state.cartVisible = !state.cartVisible;
+    showCart: (state, visible) => {
+      state.cartVisible = visible;
     }
 
   }

@@ -1,9 +1,9 @@
 <template>
-  <nav class="s-navbar">
+  <nav class="s-navbar" @click="showCart(false)">
     <div class="s-navbar__container">
 
       <div class="s-navbar__item"
-            @click="showCart">
+            @mouseover="showCart(true)">
 
         <i class="material-icons item__icon">
           shopping_cart
@@ -19,8 +19,8 @@
 export default {
     name: 'sNavbar',
     methods: {
-      showCart() {
-        this.$store.commit("showCart")
+      showCart(visible) {
+        this.$store.commit("showCart", visible)
       }
     }
 };
@@ -42,6 +42,7 @@ export default {
   background-color: $primary-color;
   color: #fff;
   box-sizing: border-box;
+  z-index: 4;
 
   &__container {
 

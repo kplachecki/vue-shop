@@ -5,12 +5,12 @@
     
 
     <div class="mainView">
-      
-      <div  class="mainView__backdrop" 
-            v-if="this.$store.state.cartVisible"
-            @click="showCart"></div>
+      <div class="mainView__backdrop" 
+            @click="showCart(false)"
+            v-if="this.$store.state.cartVisible">
+      </div>
 
-      <router-view name='sCart' v-if="this.$store.state.cartVisible"></router-view>
+      <s-cart v-if="this.$store.state.cartVisible"></s-cart>
       <router-view name='sSidebar'></router-view>
       <router-view ></router-view>
 
@@ -21,19 +21,21 @@
 
 <script>
 import sNavbar from "./components/sNavbar.vue";
+import sCart from "./components/sCart/sCart";
 
 
 export default {
   name: "app",
 
   components: {
-    sNavbar
+    sNavbar,
+    sCart
 
   },
 
   methods: {
-      showCart() {
-        this.$store.commit("showCart")
+      showCart(visible) {
+        this.$store.commit("showCart", visible)
       }
     }
 
@@ -63,7 +65,6 @@ export default {
       height: 100%;
       z-index: 5;
       position: fixed;
-      background-color: rgba(0, 0, 0, .5 )
     }
 }
 
