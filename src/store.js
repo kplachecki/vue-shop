@@ -28,6 +28,10 @@ export const store = new Vuex.Store({
       return totalItems
     },
 
+    itemCounter: state => id => {
+      return state.cart.find(el => el.id === id);
+    },
+
     totalToPay: state => {
       let totalPrice = 0;
 

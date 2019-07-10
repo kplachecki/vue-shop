@@ -1,7 +1,9 @@
 <template>
     
-    <div class="s-checkout-button">
-        <button class="s-checkout-button__button"
+    <div class="s-cart-list-submit">
+        <button class="s-cart-list-submit__button" 
+                :class="{ 'disabled-button': this.$store.state.cart.length <= 0 }"
+                :disabled="this.$store.state.cart.length <= 0"
                 @click="goToCheckout">
             Checkout
         </button>
@@ -11,7 +13,7 @@
 
 <script>
 export default {
-    name: 'sCheckoutButton',
+    name: 'sCartListSubmit',
     methods: {
         goToCheckout() {
             this.$router.push("/checkout")
@@ -24,8 +26,9 @@ export default {
 
 <style lang="scss" scoped>
     @import "@/variables.scss";
+    @import "@/styles.scss";
 
-    .s-checkout-button {
+    .s-cart-list-submit {
 
         display: flex;
         width: 90%;

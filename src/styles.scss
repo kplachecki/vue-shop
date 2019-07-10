@@ -9,3 +9,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.disabled-button {
+  background-color: lightgrey !important;
+
+}
+
+.disabled-icon, .disabled-button {
+  color: lightgray;
+  cursor: not-allowed !important;
+  transition: none !important;
+
+  &:hover {
+    transform: none !important;
+  }
+}
