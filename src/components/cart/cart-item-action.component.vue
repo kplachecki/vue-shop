@@ -1,14 +1,14 @@
 <template>
-    <div class="s-quantity-action"> 
+    <div class="s-cart-item-action"> 
 
-        <i class="material-icons s-quantity-action__icon"
+        <i class="material-icons s-cart-item-action__icon"
             @click="qtChanged(cartProduct, 'decrease')">
                 remove
         </i>
 
         <span> {{ cartProduct.ordered }} </span>
 
-        <i class="material-icons s-quantity-action__icon"
+        <i class="material-icons s-cart-item-action__icon"
             @click="qtChanged(cartProduct, 'increase')">
             add
         </i>
@@ -45,7 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.s-quantity-action {
+.s-cart-item-action {
     
     display: flex;
     justify-content: space-evenly;

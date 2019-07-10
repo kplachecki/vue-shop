@@ -1,9 +1,8 @@
-import sMain from './containers/sMain.vue'
-import sProducts from './components/sProducts/sProducts'
-const sProduct = () => import("./components/sProducts/sProduct")
-import sSidebar from "./components/sSidebar"
-const sCart = () => import("./components/sCart/sCart")
-const sCheckout = () => import("./components/sCheckout/sCheckout")
+import sMain from '@/components/main.vue'
+import sProductList from '@/views/product-list/product-list.view.vue'
+const sProductDetail = () => import("@/views/product-detail/product-detail.view.vue")
+import sSidebar from "@/components/sidebar"
+const sCheckout = () => import("@/views/checkout/checkout.view.vue")
 
 
 export const routes = [
@@ -11,20 +10,19 @@ export const routes = [
     path: "/products",
     components: {
       default: sMain,
-      sSidebar: sSidebar,
-      sCart: sCart
+      sSidebar: sSidebar
     },
     children: [
         {
           path: "",
-          component: sProducts,
-          name: "sProducts",   
+          component: sProductList,
+          name: "sProductList",   
         },
               
         {
             path: "product/:id",
-            component: sProduct,
-            name: "sProduct"
+            component: sProductDetail,
+            name: "sProductDetail"
         }
       ]
   },
