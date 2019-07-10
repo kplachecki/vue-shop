@@ -1,16 +1,18 @@
 <template>
     <div class="s-cart-item-action"> 
 
-        <i class="material-icons s-cart-item-action__icon"
+        <i class="material-icons s-cart-item-action__icon" 
+            :class="{'disabled-icon': cartProduct.ordered <= 1}"
             @click="qtChanged(cartProduct, 'decrease')">
                 remove
         </i>
 
         <span> {{ cartProduct.ordered }} </span>
 
-        <i class="material-icons s-cart-item-action__icon"
+        <i class="material-icons s-cart-item-action__icon" 
+            :class="{'disabled-icon': cartProduct.ordered >= cartProduct.qt}"
             @click="qtChanged(cartProduct, 'increase')">
-            add
+                add
         </i>
 
     </div>
@@ -44,6 +46,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @import "@/styles.scss";
 
 .s-cart-item-action {
     

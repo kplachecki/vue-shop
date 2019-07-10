@@ -12,13 +12,13 @@
             <span> Cart Value: <strong> {{ totalToPay }}$ </strong></span>
         </div>
 
-        <s-checkout-button></s-checkout-button>
+        <s-cart-list-submit></s-cart-list-submit>
 
     </div>
 </template>
 
 <script>
-import sCheckoutButton from "./checkout-button"
+import sCartListSubmit from "./cart-list-submit.component.vue"
 import sCartItem from './cart-item.component.vue'
 import { mapGetters } from "vuex";
 
@@ -30,7 +30,7 @@ export default {
     },
 
     components: {
-        sCheckoutButton,
+        sCartListSubmit,
         sCartItem
     }
 }
