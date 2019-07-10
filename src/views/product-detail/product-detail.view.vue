@@ -1,6 +1,6 @@
 <template>
 
-    <div class="s-product">
+    <div class="s-product-detail">
         <span> ID: {{ this.productDetails.id }} </span>
         <span> Category: {{ this.productDetails.category }} </span>
         <span> Model: {{ this.productDetails.model }} </span>
@@ -13,7 +13,7 @@
 <script>
 
 export default {
-    name: 'sProduct',
+    name: 'sProductDetail',
     computed: {
         productDetails() {
             return this.$store.getters.productDetails(this.$route.params.id)
@@ -24,7 +24,7 @@ export default {
 
 <style lang="scss" scoped>
 
-    .s-product {
+    .s-product-detail {
         display: flex;
         flex-direction: column;
     }

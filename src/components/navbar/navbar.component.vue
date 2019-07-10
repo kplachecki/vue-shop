@@ -2,26 +2,23 @@
   <nav class="s-navbar" @click="showCart(false)">
     <div class="s-navbar__container">
 
-      <div class="s-navbar__item"
-            @mouseover="showCart(true)">
-
-        <i class="material-icons item__icon">
-          shopping_cart
-        </i>
-
-      </div>
+      <s-cart></s-cart>
 
     </div>
   </nav>
 </template>
 
 <script>
+import sCart from "./navbar-item-cart.component.vue"
 export default {
     name: 'sNavbar',
     methods: {
       showCart(visible) {
         this.$store.commit("showCart", visible)
       }
+    },
+    components: {
+      sCart
     }
 };
 </script>
@@ -53,45 +50,17 @@ export default {
     @include phone {
 
       width: 100%
-
     }
 
     @include tablet {
 
       width: 95%;
-
     }
 
     @include ipad {
 
       width: 90%;
-      
     }
-
-  }
-
-  &__item {
-
-    height: 100%;
-    width: 10rem;
-    display: flex;
-    justify-content: center;
-
-      &:hover {
-
-        background-color: $secondary-color;
-        cursor: pointer;
-      }  
-
-      .item {
-
-        &__icon {
-
-          font-size: 3.6rem;
-          align-self: center;
-        }
-
-      }
   }
 }
 

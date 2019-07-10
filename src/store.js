@@ -18,6 +18,16 @@ export const store = new Vuex.Store({
       return state.products.find(el => el.id === id);
     },
 
+    cartCounter: state => {
+      let totalItems = 0;
+
+      state.cart.forEach(el => {
+        totalItems += el.ordered
+    
+      })
+      return totalItems
+    },
+
     totalToPay: state => {
       let totalPrice = 0;
 

@@ -1,7 +1,7 @@
 <template>
 
-    <div class="s-products">
-        <div class="s-products__list-header">
+    <div class="s-product-list">
+        <div class="s-product-list__header">
 
             <span>Product Name</span>
             <span>Quantity</span>
@@ -12,11 +12,11 @@
 
         <hr style="width: 100%"/>
                 
-        <div class="s-products__item"
+        <div class="s-product-list__item"
             v-for="(product, index) in this.$store.state.products" 
             :key="index">
 
-            <router-link :to="{ name: 'sProduct', params: { id: product.id } }" 
+            <router-link :to="{ name: 'sProductDetail', params: { id: product.id } }" 
                          tag="div">
 
                 <span class="item__name">{{ `${product.brand} ${product.model}` }}</span>
@@ -35,11 +35,11 @@
 
 <script>
 import products from "@/products.json"
-import sActions from "@/components/sActions/sActions"
+import sActions from "./components/product-item-action.component.vue"
 
 export default {
 
-    name: 'sProducts',
+    name: 'sProductList',
     components: {
                 sActions
         }
@@ -50,14 +50,14 @@ export default {
 <style lang="scss" scoped>
 @import "@/variables.scss";
 
-.s-products {
+.s-product-list {
 
     display: flex;
     flex-direction: column;
     width: 90%;
     height: 90%;
 
-        &__list-header {
+        &__header {
   
             display: grid;
             grid-template-columns: minmax(0, 4fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
@@ -72,12 +72,13 @@ export default {
             margin: .5rem 0 1rem;
             height: 3.5rem;
 
+                &:nth-child(even) {
+               
+                    background-color: rgba(64, 169, 255, 0.2);
+                }
         }
 
-        &__item:nth-child(even) {
-               
-            background-color: rgba(64, 169, 255, 0.2);
-        }
+
 
 }
 

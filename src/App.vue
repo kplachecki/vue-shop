@@ -3,9 +3,8 @@
 
     <s-navbar></s-navbar>
     
-
-    <div class="mainView">
-      <div class="mainView__backdrop" 
+    <div class="main-view">
+      <div class="main-view__backdrop" 
             @click="showCart(false)"
             v-if="this.$store.state.cartVisible">
       </div>
@@ -20,8 +19,8 @@
 </template>
 
 <script>
-import sNavbar from "./components/sNavbar.vue";
-import sCart from "./components/sCart/sCart";
+import sNavbar from "./components/navbar/navbar.component.vue";
+import sCart from "./components/cart/cart-list.component.vue";
 
 
 export default {
@@ -55,7 +54,7 @@ export default {
 
 }
 
-.mainView {
+.main-view {
   display: flex;
   flex: 1;
   padding-top: 6.4rem;

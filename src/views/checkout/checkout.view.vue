@@ -16,7 +16,7 @@
             v-for="(product, index) in this.$store.state.cart" 
             :key="index">
 
-            <router-link :to="{ name: 'sProduct', params: { id: product.id } }" 
+            <router-link :to="{ name: 'sProductDetail', params: { id: product.id } }" 
                          tag="div">
 
                 <span class="item__name">{{ `${product.brand} ${product.model}` }}</span>
