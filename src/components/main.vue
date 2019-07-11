@@ -27,7 +27,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 85vw;
     box-sizing: border-box;
     
     &__container {
