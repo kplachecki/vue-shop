@@ -30,8 +30,8 @@
                     @change="checkoutQtChange(product)"
                     required>
 
-            <span>{{ product.price }}$</span>
-            <span>{{ product.price * product.ordered }}$</span>
+            <span>{{ product.price | moneyFormat }}</span>
+            <span>{{ product.price * product.ordered | moneyFormat}}</span>
                     
 
         </div>
@@ -40,9 +40,8 @@
 
         <div class="s-checkout__total">
 
-
             <span class="total__message"> Total to pay: </span>
-            <span class="total__price">{{ totalToPay }}$ </span>
+            <span class="total__price">{{ totalToPay | moneyFormat}} </span>
 
         </div>    
 

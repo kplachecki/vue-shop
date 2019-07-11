@@ -24,7 +24,7 @@
             </router-link>
 
             <span>{{ product.qt }}</span>
-            <span>{{ product.price }}$</span>
+            <span>{{ product.price | moneyFormat }}</span>
             <s-actions :product="product"></s-actions>
                     
 
