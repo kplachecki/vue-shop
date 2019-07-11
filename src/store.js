@@ -83,6 +83,17 @@ export const store = new Vuex.Store({
 
     showCart: (state, visible) => {
       state.cartVisible = visible;
+    },
+
+    placeOrder: state => {
+      state.cart.forEach(cartEl => {
+        state.products.forEach(productEl => {
+          if(cartEl.id === productEl.id){
+              productEl.qt = productEl.qt - cartEl.ordered
+          }
+          state.cart = [];
+        })
+      })
     }
 
   }

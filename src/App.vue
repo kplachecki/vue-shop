@@ -56,6 +56,7 @@ export default {
 
 .main-view {
   display: flex;
+  justify-content: center;
   flex: 1;
   padding-top: 6.4rem;
 
