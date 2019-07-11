@@ -8,7 +8,7 @@
           shopping_cart    
         </i>
 
-        <span class="s-cart__amount">{{ totalToPay }}$</span>
+        <span class="s-cart__amount">{{ totalToPay | cartEmpty | moneyFormat }}</span>
 
     </div>
 </template>

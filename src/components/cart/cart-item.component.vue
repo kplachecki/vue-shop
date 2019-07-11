@@ -2,7 +2,7 @@
     <div class="s-cart-item">
 
         <span>{{ `${cartProduct.brand} ${cartProduct.model}` }}</span>
-        <span>{{ cartProduct.price }}$</span>
+        <span>{{ cartProduct.price | moneyFormat }}</span>
 
         <s-cart-item-action :cartProduct="cartProduct"></s-cart-item-action>
 

@@ -9,7 +9,7 @@
         </div>
 
         <div class="s-cart__value">
-            <span> Cart Value: <strong> {{ totalToPay }}$ </strong></span>
+            <span> Cart Value: <strong> {{ totalToPay | moneyFormat }} </strong></span>
         </div>
 
         <s-cart-list-submit></s-cart-list-submit>
