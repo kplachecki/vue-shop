@@ -1,12 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import mockData from "./products.json";
+import axios from 'axios';
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    products: [...mockData.products],
+    products: [],
     cart: [],
 
     cartVisible: false
@@ -94,6 +94,34 @@ export const store = new Vuex.Store({
           state.cart = [];
         })
       })
+    },
+
+    getData: state => {
+      const token = '4d6b2c5e91d9419c84a5d82107a6c35010b7556c12933757'
+      const brands = ['sony', 'samsung']
+      let counter = 0;
+
+      brands.forEach(brand => {
+        axios.
+        get(`https://fonoapi.freshpixl.com/v1/getlatest?token=${token}&brand=${brand}&limit=10`)
+        .then(res => {
+          console.log(res.data)
+          res.data.forEach(el => {
+            counter += 1;
+
+            let newSmartphone = {
+              brand: el.Brand,
+              model: el.DeviceName,
+              price: Math.random() * (10000 - 500) + 500,
+              qt: Math.floor(Math.random() * 20),
+              id: counter
+            }
+            state.products.push(newSmartphone)
+          })
+        })
+        .catch(err => console.log(err))
+      })
+      
     }
 
   }

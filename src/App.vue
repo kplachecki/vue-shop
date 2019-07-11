@@ -22,7 +22,6 @@
 import sNavbar from "./components/navbar/navbar.component.vue";
 import sCart from "./components/cart/cart-list.component.vue";
 
-
 export default {
   name: "app",
 
@@ -34,9 +33,13 @@ export default {
 
   methods: {
       showCart(visible) {
-        this.$store.commit("showCart", visible)
+        this.$store.commit('showCart', visible)
       }
-    }
+    },
+
+  created() {
+    this.$store.commit('getData')
+  } 
 
 };
 </script>

@@ -39,7 +39,8 @@ export default {
         height: 90%;
         background-color: #fff;
         border-radius: .4rem;
-        box-shadow: 0 0 0.3rem $secondary-color
+        box-shadow: 0 0 0.3rem $secondary-color;
+        overflow: auto;
     }
 }
 </style>
