@@ -60,6 +60,8 @@ export default {
             flex-direction: column;
             width: 90%;
             height: 70%;
+            overflow: auto;
+            border-bottom: .1rem solid $secondary-color;
         }
 
         &__value {

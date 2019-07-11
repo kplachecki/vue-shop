@@ -3,7 +3,8 @@
     <div class="s-product-list">
         <div class="s-product-list__header">
 
-            <span>Product Name</span>
+            <span>Brand</span>
+            <span>Model</span>
             <span>Quantity</span>
             <span>Price</span>
             <span>Actions</span>
@@ -16,11 +17,16 @@
             v-for="(product, index) in this.$store.state.products" 
             :key="index">
 
-            <router-link :to="{ name: 'sProductDetail', params: { id: product.id } }" 
-                         tag="div">
+            <router-link class="item__name" 
+                         :to="{ name: 'sProductDetail', params: { id: product.id } }" 
+                         tag="span">
+                {{product.brand}}
+            </router-link>
 
-                <span class="item__name">{{ `${product.brand} ${product.model}` }}</span>
-
+            <router-link class="item__name" 
+                         :to="{ name: 'sProductDetail', params: { id: product.id } }" 
+                         tag="span">
+                {{product.model}}
             </router-link>
 
             <span>{{ product.qt }}</span>
@@ -34,7 +40,6 @@
 </template>
 
 <script>
-import products from "@/products.json"
 import sActions from "./components/product-item-action.component.vue"
 
 export default {
@@ -42,7 +47,8 @@ export default {
     name: 'sProductList',
     components: {
                 sActions
-        }
+    },
+
                 
 }
 </script>
@@ -56,11 +62,12 @@ export default {
     flex-direction: column;
     width: 90%;
     height: 90%;
+    
 
         &__header {
   
             display: grid;
-            grid-template-columns: minmax(0, 4fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+            grid-template-columns: minmax(0, 2fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
 
         }
 
@@ -68,7 +75,7 @@ export default {
   
             display: grid;
             align-items: center;
-            grid-template-columns: minmax(0, 4fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+            grid-template-columns: minmax(0, 2fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
             margin: .5rem 0 1rem;
             height: 3.5rem;
 
