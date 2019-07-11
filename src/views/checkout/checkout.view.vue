@@ -40,7 +40,14 @@
 
         <div class="s-checkout__total">
 
-            <button @click="placeOrder" class="s-button">Place Order</button>
+            <button @click="placeOrder" 
+                    class="s-button"
+                    :class="{ 'disabled-button': this.$store.state.cart.length <= 0 }"
+                    :disabled="this.$store.state.cart.length <= 0">    
+                           
+                    Place Order
+                    
+            </button>
             <span class="total__message"> Total to pay: </span>
             <span class="total__price">{{ totalToPay | moneyFormat}} </span>
 
