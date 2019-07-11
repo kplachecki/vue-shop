@@ -1,14 +1,14 @@
 <template>
-    <div class="s-cart"
+    <div class="s-navbar-item-cart"
         @mouseover="showCart(true)">
 
-        <span class="s-cart__counter">{{ cartCounter }}</span>
+        <span class="s-navbar-item-cart__counter">{{ cartCounter }}</span>
 
-        <i class="material-icons s-cart__icon">
+        <i class="material-icons s-navbar-item-cart__icon">
           shopping_cart    
         </i>
 
-        <span class="s-cart__amount">{{ totalToPay | cartEmpty | moneyFormat }}</span>
+        <span class="s-navbar-item-cart__amount">{{ totalToPay | cartEmpty | moneyFormat }}</span>
 
     </div>
 </template>
@@ -17,7 +17,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-    name: 'sCart',
+    name: 'sNavbarItemCart',
 
     computed: {
         ...mapGetters(['totalToPay', 'cartCounter'])
@@ -34,7 +34,7 @@ export default {
 <style lang="scss" scoped>
   @import "@/variables.scss";
 
-.s-cart {
+.s-navbar-item-cart {
 
     height: 100%;
     width: 10rem;
@@ -42,15 +42,14 @@ export default {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    cursor: pointer;
+
 
     &:hover {
-
         background-color: $secondary-color;
-        cursor: pointer;
       }  
 
         &__icon {
-
             font-size: 3.6rem;
         }
 

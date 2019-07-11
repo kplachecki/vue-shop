@@ -1,15 +1,16 @@
 <template>
   <nav class="s-navbar" @click="showCart(false)">
-    <div class="s-navbar__container">
 
-      <s-cart></s-cart>
+      <s-navbar-item-logo></s-navbar-item-logo>
+      <s-navbar-item-cart></s-navbar-item-cart>
 
-    </div>
   </nav>
 </template>
 
 <script>
-import sCart from "./navbar-item-cart.component.vue"
+import sNavbarItemCart from "./navbar-item-cart.component.vue"
+import sNavbarItemLogo from "./navbar-item-logo.component.vue"
+
 export default {
     name: 'sNavbar',
     methods: {
@@ -18,7 +19,8 @@ export default {
       }
     },
     components: {
-      sCart
+      sNavbarItemCart,
+      sNavbarItemLogo,
     }
 };
 </script>
@@ -34,34 +36,34 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  justify-content: center;
+  justify-content: space-between;
   height: 6.4rem;
   background-color: $primary-color;
   color: #fff;
   box-sizing: border-box;
   z-index: 4;
 
-  &__container {
+  // &__container {
 
-    display: flex;
-    justify-content: flex-end;
-    width: 85%;
+  //   display: flex;
+  //   justify-content: flex-end;
+  //   width: 85%;
 
-    @include phone {
+  //   @include phone {
 
-      width: 100%
-    }
+  //     width: 100%
+  //   }
 
-    @include tablet {
+  //   @include tablet {
 
-      width: 95%;
-    }
+  //     width: 95%;
+  //   }
 
-    @include ipad {
+  //   @include ipad {
 
-      width: 90%;
-    }
-  }
+  //     width: 90%;
+  //   }
+  // }
 }
 
 </style>
