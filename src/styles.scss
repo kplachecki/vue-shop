@@ -1,3 +1,5 @@
+@import "@/variables.scss";
+
 html {
   font-size: 10px;
 }
@@ -24,3 +26,28 @@ body {
     transform: none !important;
   }
 }
+
+.s-button {
+
+  grid-column: 1;
+  border: none;
+  color: #fff;
+  height: 100%;
+  background-color: $primary-color;
+  font-family: inherit;
+  font-size: 1.6rem;
+  cursor: pointer;
+
+  &:hover {
+      background-color: $secondary-color
+  }
+
+  &:active {
+      transform: scale(0.95);
+  }
+      
+  &:focus {
+      outline: 0;
+  }
+}
+

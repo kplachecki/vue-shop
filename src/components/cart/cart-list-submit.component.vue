@@ -1,7 +1,7 @@
 <template>
     
     <div class="s-cart-list-submit">
-        <button class="s-cart-list-submit__button" 
+        <button class="s-cart-list-submit__button s-button" 
                 :class="{ 'disabled-button': this.$store.state.cart.length <= 0 }"
                 :disabled="this.$store.state.cart.length <= 0"
                 @click="goToCheckout">
@@ -37,24 +37,7 @@ export default {
 
         &__button {
 
-            border: none;
-            color: #fff;
             width: 50%;
-            background-color: $primary-color;
-            font-family: inherit;
-            cursor: pointer;
-
-            &:hover {
-                background-color: $secondary-color
-            }
-
-            &:active {
-                transform: scale(0.95);
-            }
-            
-            &:focus {
-                outline: 0;
-            }
         }
     }
 

@@ -40,6 +40,7 @@
 
         <div class="s-checkout__total">
 
+            <button @click="placeOrder" class="s-button">Place Order</button>
             <span class="total__message"> Total to pay: </span>
             <span class="total__price">{{ totalToPay | moneyFormat}} </span>
 
@@ -49,7 +50,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from'vuex';
 
 export default {
     name: 'sCheckout',
@@ -66,16 +67,24 @@ export default {
                 id: product.id,
                 newOrderedQt: Number(event.target.value)
             }
-            this.$store.commit("checkoutQtChange", productDetails)
+            this.$store.commit('checkoutQtChange', productDetails)
             } else return
-            
+        },
+
+        placeOrder(){
+            this.$store.commit('placeOrder')
+            this.$router.push('/products')
         }
+
+
     }
     
 }
 </script>
 
 <style lang="scss" scoped>
+@import "@/variables.scss";
+@import "@/styles.scss";
 
 .s-checkout {
 
@@ -129,16 +138,14 @@ export default {
 .total {
 
     &__price {
-
         grid-column: 4;
         font-weight: bold;
     }
 
     &__message {
-
         grid-column: 3;
     }
+        
 }
-
 
 </style>
