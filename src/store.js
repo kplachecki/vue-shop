@@ -116,10 +116,16 @@ export const store = new Vuex.Store({
             let colorArr = el.colors.split(',')
             colorArr = colorArr.map(col => col.trim())
 
+            let price = 0
+
+            if(el.price){
+              price = Number(el.price.replace(/\D+/g,'')) * 4.27
+            } else price = Number((Math.random() * (10000 - 500) + 500).toFixed(2))
+
             let newSmartphone = {
               brand: el.Brand,
               model: el.DeviceName,
-              price: Number((Math.random() * (10000 - 500) + 500).toFixed(2)),
+              price: price,
               qt: Math.floor(Math.random() * 20),
               id: counter,
               color: colorArr,
