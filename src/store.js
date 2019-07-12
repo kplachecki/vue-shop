@@ -81,6 +81,12 @@ export const store = new Vuex.Store({
       
     },
 
+    colorPicked: (state, productDetails) => {
+      const foundProduct = state.products.find(el => el.id === productDetails.id);
+      foundProduct.pickedColor = productDetails.pickedColor
+
+    },
+
     showCart: (state, visible) => {
       state.cartVisible = visible;
     },
@@ -105,16 +111,19 @@ export const store = new Vuex.Store({
         axios.
         get(`https://fonoapi.freshpixl.com/v1/getlatest?token=${token}&brand=${brand}&limit=10`)
         .then(res => {
-          console.log(res.data)
           res.data.forEach(el => {
             counter += 1;
+            let colorArr = el.colors.split(',')
+            colorArr = colorArr.map(col => col.trim())
 
             let newSmartphone = {
               brand: el.Brand,
               model: el.DeviceName,
-              price: Math.random() * (10000 - 500) + 500,
+              price: Number((Math.random() * (10000 - 500) + 500).toFixed(2)),
               qt: Math.floor(Math.random() * 20),
-              id: counter
+              id: counter,
+              color: colorArr,
+              pickedColor: null
             }
             state.products.push(newSmartphone)
           })
