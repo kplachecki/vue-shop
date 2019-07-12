@@ -1,10 +1,8 @@
 <template>
     <div class="s-product-item-action">
 
-
-
         <div class="material-icons icon" 
-            :class="{'disabled-icon': product.qt < 1}" 
+            :class="{'disabled-icon': product.qt < 1 || !product.pickedColor}"
             @click="addToCart">
             add_shopping_cart
 
@@ -27,10 +25,13 @@ export default {
 
         addToCart() {
 
-            if(this.product.qt > 0) {
+            if(this.product.qt > 0 && this.product.pickedColor) {
                 this.$store.commit("addToCart", this.product);
 
-            }else {
+            }else if (!this.product.pickedColor){
+                alert('Pick color first')
+            }
+            else {
                 alert("Product unavailable")
             }
 

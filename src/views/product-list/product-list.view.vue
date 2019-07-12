@@ -5,6 +5,7 @@
 
             <span>Brand</span>
             <span>Model</span>
+            <span>Color</span>
             <span>Quantity</span>
             <span>Price</span>
             <span>Actions</span>
@@ -29,6 +30,8 @@
                 {{product.model}}
             </router-link>
 
+            <s-product-item-color :product="product"></s-product-item-color>
+
             <span>{{ product.qt }}</span>
             <span>{{ product.price | moneyFormat }}</span>
             <s-actions :product="product"></s-actions>
@@ -41,12 +44,14 @@
 
 <script>
 import sActions from "./components/product-item-action.component.vue"
+import sProductItemColor from './components/product-item-color.component.vue'
 
 export default {
 
     name: 'sProductList',
     components: {
-                sActions
+                sActions,
+                sProductItemColor
     },
 
                 
@@ -67,7 +72,7 @@ export default {
         &__header {
   
             display: grid;
-            grid-template-columns: minmax(0, 2fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
 
         }
 
@@ -75,7 +80,7 @@ export default {
   
             display: grid;
             align-items: center;
-            grid-template-columns: minmax(0, 2fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
             margin: .5rem 0 1rem;
             height: 3.5rem;
 
