@@ -9,11 +9,11 @@
                     :name="'radio' + product.id"
                     class="s-product-item-color__input"
                     :id="color + product.id"
-                    :value="color.trim('', ' ')"
+                    :value="color.trim()"
                     @click="colorPicked">
 
             <label class="s-product-item-color__label"
-                    :style="{ backgroundColor: color.toLowerCase().trim(' ', '') }"
+                    :style="{ backgroundColor: color.toLowerCase().replace(' ', '') }"
                     :for="color + product.id">
                     &nbsp;
             </label>
@@ -30,7 +30,6 @@ export default {
 
     methods: {
         colorPicked() {
-
             let productDetails = {
                 id: this.product.id,
                 pickedColor: event.target.value
