@@ -30,7 +30,7 @@
                 <input  type="number"   
                         :value="product.ordered" 
                         min="0"
-                        :max="product.qt"
+                        :max="product.quantity"
                         @change="checkoutQtChange(product)"
                         required>
 
@@ -75,7 +75,7 @@ export default {
 
         checkoutQtChange(product){
 
-            if(Number(event.target.value) <= product.qt){
+            if(Number(event.target.value) <= product.quantity){
                 let productDetails = {
                 id: product.id,
                 newOrderedQt: Number(event.target.value)

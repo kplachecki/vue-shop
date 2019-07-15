@@ -1,21 +1,13 @@
 <template>
 
     <div class="s-product-list">
-        <div class="s-product-list__header">
 
-            <span>Brand</span>
-            <span>Model</span>
-            <span>Color</span>
-            <span>Quantity</span>
-            <span>Price</span>
-            <span>Actions</span>
-
-        </div>
+        <s-product-list-header :products='this.products'></s-product-list-header>
 
         <hr style="width: 100%"/>
                 
         <div class="s-product-list__item"
-            v-for="(product, index) in this.$store.state.products" 
+            v-for="(product, index) in this.products" 
             :key="index">
 
             <router-link class="item__name" 
@@ -32,7 +24,7 @@
 
             <s-product-item-color :product="product"></s-product-item-color>
 
-            <span>{{ product.qt }}</span>
+            <span>{{ product.quantity }}</span>
             <span>{{ product.price | moneyFormat }}</span>
             <s-actions :product="product"></s-actions>
                     
@@ -45,16 +37,22 @@
 <script>
 import sActions from "./components/product-item-action.component.vue"
 import sProductItemColor from './components/product-item-color.component.vue'
+import sProductListHeader from './components/product-list-header.component'
 
 export default {
 
     name: 'sProductList',
     components: {
                 sActions,
-                sProductItemColor
+                sProductItemColor,
+                sProductListHeader
     },
+    computed: {
+            products() {
+               return this.$store.state.products
+            }
 
-                
+    }              
 }
 </script>
 
@@ -67,14 +65,6 @@ export default {
     flex-direction: column;
     width: 90%;
     height: 90%;
-    
-
-        &__header {
-  
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-
-        }
 
         &__item {
   
@@ -89,17 +79,12 @@ export default {
                     background-color: rgba(64, 169, 255, 0.2);
                 }
         }
-
-
-
 }
 
 .item {
 
     &__name {
-
         cursor: pointer;
-
     }
 }    
 </style>

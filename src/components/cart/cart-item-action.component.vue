@@ -3,15 +3,15 @@
 
         <i class="material-icons s-cart-item-action__icon" 
             :class="{'disabled-icon': cartProduct.ordered <= 1}"
-            @click="qtChanged(cartProduct, 'decrease')">
+            @click="quantityChanged(cartProduct, 'decrease')">
                 remove
         </i>
 
         <span> {{ cartProduct.ordered }} </span>
 
         <i class="material-icons s-cart-item-action__icon" 
-            :class="{'disabled-icon': cartProduct.ordered >= cartProduct.qt}"
-            @click="qtChanged(cartProduct, 'increase')">
+            :class="{'disabled-icon': cartProduct.ordered >= cartProduct.quantity}"
+            @click="quantityChanged(cartProduct, 'increase')">
                 add
         </i>
 
@@ -25,10 +25,10 @@ export default {
 
     methods: {
         
-        qtChanged(cartProduct, method) {
+        quantityChanged(cartProduct, method) {
 
             if((cartProduct.ordered === 1 && method === 'decrease') 
-                || (cartProduct.ordered === cartProduct.qt && method === 'increase')){
+                || (cartProduct.ordered === cartProduct.quantity && method === 'increase')){
                 return
 
             } else { 
@@ -37,7 +37,7 @@ export default {
                 id: cartProduct.id
                 }
 
-                this.$store.commit("qtChanged", actionDetail)}
+                this.$store.commit("quantityChanged", actionDetail)}
             
         },
     }

@@ -55,7 +55,7 @@ export const store = new Vuex.Store({
       const foundProduct = state.cart.find(el => el.id === product.id);
 
       if (foundProduct) {
-        if(foundProduct.ordered < cartProduct.qt){
+        if(foundProduct.ordered < cartProduct.quantity){
             foundProduct.ordered += 1;
 
         } else return
@@ -69,7 +69,7 @@ export const store = new Vuex.Store({
       state.cart = state.cart.filter(el => el.id !== product.id)
     },
 
-    qtChanged: (state, actionDetail) => {
+    quantityChanged: (state, actionDetail) => {
 
       const foundProduct = state.cart.find(el => el.id === actionDetail.id);
       actionDetail.method === 'increase' ? foundProduct.ordered += 1 : foundProduct.ordered -= 1;
@@ -95,7 +95,8 @@ export const store = new Vuex.Store({
       state.cart.forEach(cartEl => {
         state.products.forEach(productEl => {
           if(cartEl.id === productEl.id){
-              productEl.qt = productEl.qt - cartEl.ordered
+              productEl.quantity = productEl.quantity - cartEl.ordered
+              productEl.pickedColor = null
           }
           state.cart = [];
         })
@@ -126,7 +127,7 @@ export const store = new Vuex.Store({
               brand: el.Brand,
               model: el.DeviceName.replace(`${el.Brand} `, ''),
               price: price,
-              qt: Math.floor(Math.random() * 20),
+              quantity: Math.floor(Math.random() * 20),
               id: counter,
               color: colorArr,
               pickedColor: null
@@ -137,6 +138,17 @@ export const store = new Vuex.Store({
         .catch(err => console.log(err))
       })
       
+    },
+
+    sortData: (state, sortDetails) => {
+
+      if(sortDetails.sortType === 'increase'){
+        state.products.sort((a, b) => (a[sortDetails.sortBy] < b[sortDetails.sortBy]) ? 1 
+                                    : ((b[sortDetails.sortBy] < a[sortDetails.sortBy]) ? -1 : 0))
+      }else {
+        state.products.sort((a, b) => (a[sortDetails.sortBy] > b[sortDetails.sortBy]) ? 1 
+                                    : ((b[sortDetails.sortBy] > a[sortDetails.sortBy]) ? -1 : 0))
+      }
     }
 
   }

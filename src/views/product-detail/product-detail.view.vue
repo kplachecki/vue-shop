@@ -5,7 +5,7 @@
         <span> Category: {{ this.productDetails.category }} </span>
         <span> Model: {{ this.productDetails.model }} </span>
         <span> Price: {{ this.productDetails.price | moneyFormat }} </span>
-        <span> Quantity: {{ this.productDetails.qt }} </span>
+        <span> Quantity: {{ this.productDetails.quantity }} </span>
     </div>
 
 </template>
