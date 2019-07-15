@@ -2,7 +2,7 @@
     <div class="s-product-item-action">
 
         <div class="material-icons icon" 
-            :class="{'disabled-icon': product.qt < 1 || !product.pickedColor}"
+            :class="{'disabled-icon': product.quantity < 1 || !product.pickedColor}"
             @click="addToCart">
             add_shopping_cart
 
@@ -25,7 +25,7 @@ export default {
 
         addToCart() {
 
-            if(this.product.qt > 0 && this.product.pickedColor) {
+            if(this.product.quantity > 0 && this.product.pickedColor) {
                 this.$store.commit("addToCart", this.product);
 
             }else if (!this.product.pickedColor){
