@@ -5,6 +5,7 @@
             <div class="list__header">
 
                 <span>Product Name</span>
+                <span>Color</span>
                 <span>Quantity</span>
                 <span>Price</span>
                 <span>Total Price</span>
@@ -23,6 +24,8 @@
                     <span class="item__name">{{ `${product.brand} ${product.model}` }}</span>
 
                 </router-link>
+
+                <span> {{product.pickedColor }} </span>
 
                 <input  type="number"   
                         :value="product.ordered" 
@@ -114,14 +117,14 @@ export default {
                 &__header {
     
                     display: grid;
-                    grid-template-columns: minmax(0, 4fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+                    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
                 }
 
                 &__item {
     
                     display: grid;
                     align-items: center;
-                    grid-template-columns: minmax(0, 4fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+                    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
                     margin: .5rem 0 1rem;
                     height: 3.5rem;
                 }
