@@ -124,7 +124,7 @@ export const store = new Vuex.Store({
 
             let newSmartphone = {
               brand: el.Brand,
-              model: el.DeviceName,
+              model: el.DeviceName.replace(`${el.Brand} `, ''),
               price: price,
               qt: Math.floor(Math.random() * 20),
               id: counter,
