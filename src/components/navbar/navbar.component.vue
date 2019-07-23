@@ -43,27 +43,6 @@ export default {
   box-sizing: border-box;
   z-index: 4;
 
-  // &__container {
-
-  //   display: flex;
-  //   justify-content: flex-end;
-  //   width: 85%;
-
-  //   @include phone {
-
-  //     width: 100%
-  //   }
-
-  //   @include tablet {
-
-  //     width: 95%;
-  //   }
-
-  //   @include ipad {
-
-  //     width: 90%;
-  //   }
-  // }
 }
 
 </style>

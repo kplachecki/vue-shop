@@ -1,7 +1,7 @@
 import sMain from '@/components/main.vue'
 import sProductList from '@/views/product-list/product-list.view.vue'
 const sProductDetail = () => import("@/views/product-detail/product-detail.view.vue")
-import sSidebar from "@/components/sidebar"
+import sSidebar from "@/components/sidebar/sidebar.component.vue"
 const sCheckout = () => import("@/views/checkout/checkout.view.vue")
 
 
