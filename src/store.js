@@ -9,10 +9,44 @@ export const store = new Vuex.Store({
     products: [],
     cart: [],
 
-    cartVisible: false
+    filters: {
+      brandList: [],
+      price: {
+        from: null,
+        to: null,
+      },
+      search: null,
+    },
+
+    cartVisible: false,
+    filterEnabled: false
   },
 
   getters: {
+    
+    filteredProducts: state => {
+      const brandList = state.filters.brandList;
+      const priceFilter = state.filters.price;
+      const modelName = state.filters.search
+
+      return state.products
+        .filter((p) => brandList.length > 0 ? brandList.includes(p.brand) : true)
+        .filter((p) => {
+          if(!priceFilter.from && !priceFilter.to){
+            return true
+          }else if(!priceFilter.from){
+            return p.price <= Number(priceFilter.to)
+
+          }else if(!priceFilter.to){
+            return p.price >= Number(priceFilter.from)
+
+          }else{
+            return p.price >= Number(priceFilter.from) 
+            && p.price <= Number(priceFilter.to)
+          }
+        }).filter((p) => modelName ? (p.model.toLowerCase()).includes(modelName.toLowerCase()) : true)
+        
+    },
 
     productDetails: state => id => {
       return state.products.find(el => el.id === id);
@@ -105,7 +139,7 @@ export const store = new Vuex.Store({
 
     getData: state => {
       const token = '4d6b2c5e91d9419c84a5d82107a6c35010b7556c12933757'
-      const brands = ['sony', 'samsung']
+      const brands = ['sony', 'samsung', 'xiaomi']
       let counter = 0;
 
       brands.forEach(brand => {
@@ -134,10 +168,9 @@ export const store = new Vuex.Store({
             }
             state.products.push(newSmartphone)
           })
-        })
-        .catch(err => console.log(err))
+        }).catch(err => console.log(err))
       })
-      
+
     },
 
     sortData: (state, sortDetails) => {
@@ -149,7 +182,21 @@ export const store = new Vuex.Store({
         state.products.sort((a, b) => (a[sortDetails.sortBy] > b[sortDetails.sortBy]) ? 1 
                                     : ((b[sortDetails.sortBy] > a[sortDetails.sortBy]) ? -1 : 0))
       }
-    }
+    },
 
-  }
+    filterData: (state, filteredBrands) => {
+      state.filters.brandList = filteredBrands
+    },
+
+    filterPrice: (state, priceBetween) => {
+      state.filters.price.from = priceBetween.from 
+      state.filters.price.to = priceBetween.to
+
+    },
+
+    filterModel: (state, modelName) => {
+      state.filters.search = modelName
+
+    }
+}
 });
